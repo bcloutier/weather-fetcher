@@ -1,0 +1,17 @@
+{
+  "name": "temp-fetcher",
+  "version": "0.0.0",
+  "description": "data analysis tools",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Cloutier",
+  "license": "BSD",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "html-to-json": "^0.6.0",
+    "morgan": "^1.6.1"
+  }
+}

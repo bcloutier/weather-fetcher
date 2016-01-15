@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
+
+    <title>ews-proto</title>
+
+    <!-- CSS Dependencies: production -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+
+    <!-- JS Dependencies: developement -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+
+    <style>
+        body {
+            padding-top: 50px;
+            font: 12px sans-serif;
+        }
+        path {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 2px;
+        }
+        
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+<body ng-app="ews-proto" ng-controller="MainController as main">
+    <p class="form-group">
+        <label>Pick Date:</label>
+        <input type="text" class="form-control" uib-datepicker-popup="{{main.format}}" ng-model="main.date" />
+    </p>
+    <button class="btn btn-default" ng-click="main.updateWeather()">Submit</button>
+    {{main.url}} <br>
+<!--
+    <div >
+        <div ng-repeat="d in main.data">{{d}}</div>
+    </div>
+-->
+
+    <!-- JS Source: developement -->
+    <script src="app/app.js"></script>
+</body>
