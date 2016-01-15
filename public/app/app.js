@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('ews-proto', ['ui.bootstrap'])
-        .factory('WundergroundService', ['$http', function wunderground_historial($http) {
+        .module('weather-fetcher', ['ui.bootstrap'])
+        .factory('WeatherService', ['$http', function wunderground_historial($http) {
             var _types = ['Daily', 'Weekly', 'Monthly'];
 
             var ws = {
@@ -20,7 +20,7 @@
             }
 
             function getWeather(url) {
-                return $http.post('/api/proxy', url).then(function (raw) {
+                return $http.post('/weather', url).then(function (raw) {
                     return _.map(raw.data, _parse)
                 });
             }
@@ -35,27 +35,16 @@
             }
         }])
         .factory('VisualizeService', function () {
-            var units = {
-                temperature: "F",
-                pressure: "in",
-                humidity: "%"
-            }
-
-            var update = false;
+            var units = { temperature: "F", pressure: "in", humidity: "%" }
 
             var vd = {
-                lineChart: lineChart
+                lineChart: _lineChart
             }
 
             return vd;
 
-            function lineChart(data, parameter) {
-                var margin = {
-                        left: 60,
-                        top: 50,
-                        right: 40,
-                        bottom: 60
-                    },
+            function _lineChart(data, parameter) {
+                var margin = {left: 60, top: 50, right: 40, bottom: 60 },
                     width = 600 - margin.left - margin.right,
                     height = 270 - margin.top - margin.bottom;
 
@@ -95,7 +84,6 @@
                     return d[parameter];
                 }));
 
-
                 svg.append("path")
                     .attr("class", "line")
                     .attr("class", parameter)
@@ -129,7 +117,6 @@
                 }
 
                 function _update(data) {
-                    console.log(parameter)
                     x.domain(data.map(function (d) {
                         return d.timestamp
                     }));
@@ -155,7 +142,7 @@
                 }
             }
         })
-        .controller('MainController', ['WundergroundService', '$http', 'VisualizeService', function (wunderground,
+        .controller('MainController', ['WeatherService', '$http', 'VisualizeService', function (wunderground,
             $http, VisualizeService) {
             var vm = this,
                 temperature,

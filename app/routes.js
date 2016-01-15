@@ -2,7 +2,7 @@ var htmlToJson = require("html-to-json");
 
 module.exports = function(app) {
     
-    app.post('/api/proxy', function(req, res) {
+    app.post('/weather', function(req, res) {
         htmlToJson.request(req.body.url, function() {
             return this.map('#observations_details td', function(val) { 
                 return val.text().replace(/(\r\n|\n|\r|\t)/gm,"");;

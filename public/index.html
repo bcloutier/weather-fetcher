@@ -1,13 +1,10 @@
 <!doctype html>
 <html>
-
 <head>
-    <!-- META -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Optimize mobile viewport -->
 
-    <title>ews-proto</title>
+    <title>weather-fetcher</title>
 
     <!-- CSS Dependencies: production -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -41,19 +38,14 @@
         }
     </style>
 </head>
-<body ng-app="ews-proto" ng-controller="MainController as main">
+<body ng-app="weather-fetcher" ng-controller="MainController as main">
     <p class="form-group">
         <label>Pick Date:</label>
         <input type="text" class="form-control" uib-datepicker-popup="{{main.format}}" ng-model="main.date" />
     </p>
-    <button class="btn btn-default" ng-click="main.updateWeather()">Submit</button>
-    {{main.url}} <br>
-<!--
-    <div >
-        <div ng-repeat="d in main.data">{{d}}</div>
-    </div>
--->
-
+    <button class="btn btn-default" ng-click="main.updateWeather()">Submit</button> <br/>
+    
     <!-- JS Source: developement -->
     <script src="app/app.js"></script>
 </body>
+</html>
