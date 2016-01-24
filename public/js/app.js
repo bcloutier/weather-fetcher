@@ -1,4 +1,4 @@
-(function ($, _, d3) {
+(function ($, _, d3, angular) {
     'use strict';
 
     angular
@@ -151,9 +151,9 @@
 
             vm.format = 'MM/dd/yyyy';
             vm.date = new Date();
-            vm.date.setFullYear(2011);
-            vm.date.setDate(13);
-            vm.date.setMonth(10);
+            vm.date.setFullYear(2012);
+            vm.date.setDate(1);
+            vm.date.setMonth(1);
 
             //initalize
             wunderground.getWeather({
@@ -167,6 +167,7 @@
             })
 
             vm.updateWeather = function () {
+
                 vm.url = wunderground.constructURL('ETIH', vm.date.getFullYear(), vm.date.getMonth() + 1,
                     vm.date.getDate(), 'Daily', 'Hohenfels', 'Germany');
                 wunderground.getWeather({
@@ -181,4 +182,4 @@
             }
         }])
 
-})(jQuery, _, d3)
+})(jQuery, _, d3, angular)
